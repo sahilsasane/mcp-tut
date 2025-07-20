@@ -1,0 +1,20 @@
+[project]
+name = "google-workspace"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "arxiv>=2.2.0",
+    "google-api-python-client>=2.175.0",
+    "google-auth-httplib2>=0.2.0",
+    "google-auth-oauthlib>=1.2.2",
+    "httpx>=0.28.1",
+    "ipykernel>=6.29.5",
+    "ipywidgets>=8.1.7",
+    "langchain>=0.3.26",
+    "mcp[cli]>=1.10.1",
+    "openai>=1.93.1",
+    "pandas>=2.3.0",
+    "requests>=2.32.4",
+]

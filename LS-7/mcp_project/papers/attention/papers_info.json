@@ -1,0 +1,25 @@
+{
+  "1709.06308v1": {
+    "title": "Exploring Human-like Attention Supervision in Visual Question Answering",
+    "authors": [
+      "Tingting Qiao",
+      "Jianfeng Dong",
+      "Duanqing Xu"
+    ],
+    "summary": "Attention mechanisms have been widely applied in the Visual Question\nAnswering (VQA) task, as they help to focus on the area-of-interest of both\nvisual and textual information. To answer the questions correctly, the model\nneeds to selectively target different areas of an image, which suggests that an\nattention-based model may benefit from an explicit attention supervision. In\nthis work, we aim to address the problem of adding attention supervision to VQA\nmodels. Since there is a lack of human attention data, we first propose a Human\nAttention Network (HAN) to generate human-like attention maps, training on a\nrecently released dataset called Human ATtention Dataset (VQA-HAT). Then, we\napply the pre-trained HAN on the VQA v2.0 dataset to automatically produce the\nhuman-like attention maps for all image-question pairs. The generated\nhuman-like attention map dataset for the VQA v2.0 dataset is named as\nHuman-Like ATtention (HLAT) dataset. Finally, we apply human-like attention\nsupervision to an attention-based VQA model. The experiments show that adding\nhuman-like supervision yields a more accurate attention together with a better\nperformance, showing a promising future for human-like attention supervision in\nVQA.",
+    "pdf_url": "http://arxiv.org/pdf/1709.06308v1",
+    "published": "2017-09-19"
+  },
+  "2412.09925v2": {
+    "title": "Simulating Hard Attention Using Soft Attention",
+    "authors": [
+      "Andy Yang",
+      "Lena Strobl",
+      "David Chiang",
+      "Dana Angluin"
+    ],
+    "summary": "We study conditions under which transformers using soft attention can\nsimulate hard attention, that is, effectively focus all attention on a subset\nof positions. First, we examine several subclasses of languages recognized by\nhard-attention transformers, which can be defined in variants of linear\ntemporal logic. We demonstrate how soft-attention transformers can compute\nformulas of these logics using unbounded positional embeddings or temperature\nscaling. Second, we demonstrate how temperature scaling allows softmax\ntransformers to simulate general hard-attention transformers, using a\ntemperature that depends on the minimum gap between the maximum attention\nscores and other attention scores.",
+    "pdf_url": "http://arxiv.org/pdf/2412.09925v2",
+    "published": "2024-12-13"
+  }
+}
