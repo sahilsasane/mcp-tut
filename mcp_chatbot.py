@@ -184,6 +184,20 @@ class MCP_ChatBot:
                     session = sess
                     break
 
+        # Fallback for Project URIs - try any Project resource session
+        if not session and resource_uri.startswith("project://"):
+            for uri, sess in self.sessions.items():
+                if uri.startswith("project://"):
+                    session = sess
+                    break
+
+        # Fallback for Company URIs - try any Company resource session
+        if not session and resource_uri.startswith("company://"):
+            for uri, sess in self.sessions.items():
+                if uri.startswith("company://"):
+                    session = sess
+                    break
+
         if not session:
             print(f"Resource '{resource_uri}' not found.")
             return
@@ -209,15 +223,43 @@ class MCP_ChatBot:
         gmail_resources = [
             uri for uri in self.sessions.keys() if uri.startswith("gmail://")
         ]
+        project_resources = [
+            uri for uri in self.sessions.keys() if uri.startswith("project://")
+        ]
+        company_resources = [
+            uri for uri in self.sessions.keys() if uri.startswith("company://")
+        ]
 
-        if not gmail_resources:
-            print("No Gmail resources available.")
+        if not (gmail_resources or project_resources or company_resources):
+            print("No resources available.")
             return
 
-        print("\nAvailable Gmail resources:")
-        print("- meeting-emails: Get recent meeting-related emails")
-        print("- processed-meetings: Get processed meeting data")
-        print("- meeting-emails/{email_id}: Get specific meeting email by ID")
+        print("\nAvailable resources:")
+
+        if gmail_resources:
+            print("\nGmail resources:")
+            print("- meeting-emails: Get recent meeting-related emails")
+            print("- processed-meetings: Get processed meeting data")
+            print("- meeting-emails/{email_id}: Get specific meeting email by ID")
+
+        if project_resources:
+            print("\nProject resources:")
+            print("- info: Get project information from the knowledge repository")
+            print(
+                "- feature-updates: Get feature updates from the knowledge repository"
+            )
+            print("- status: Get project status from the knowledge repository")
+
+        if company_resources:
+            print("\nCompany resources:")
+            print("- info: Get company information from the knowledge repository")
+            print(
+                "- solution-info: Get solution information from the knowledge repository"
+            )
+            print(
+                "- all-info: Get all company information from the knowledge repository"
+            )
+            print("- docs: Get company documents from the knowledge repository")
 
     async def list_prompts(self):
         """List all available prompts."""
@@ -263,13 +305,59 @@ class MCP_ChatBot:
         except Exception as e:
             print(f"Error: {e}")
 
+    def parse_resource_command(self, query):
+        """Parse @resource command and return appropriate URI"""
+        # Remove @ sign
+        resource_identifier = query[1:]
+
+        # Gmail resources
+        if resource_identifier == "meeting-emails":
+            return "gmail://meeting-emails"
+        elif resource_identifier == "processed-meetings":
+            return "gmail://processed-meetings"
+        elif resource_identifier.startswith("meeting-emails/"):
+            # Extract email ID from meeting-emails/email_id
+            email_id = resource_identifier.split("/", 1)[1]
+            return f"gmail://meeting-emails/{email_id}"
+
+        # Project resources
+        elif resource_identifier == "project-info":
+            return "project://info"
+        elif resource_identifier == "feature-updates":
+            return "project://feature-updates"
+        elif resource_identifier == "project-status":
+            return "project://status"
+
+        # Company resources
+        elif resource_identifier == "company-info":
+            return "company://info"
+        elif resource_identifier == "solution-info":
+            return "company://solution-info"
+        elif resource_identifier == "company-all-info":
+            return "company://all-info"
+        elif resource_identifier == "company-docs":
+            return "company://docs"
+
+        return None
+
     async def chat_loop(self):
         print("\nMCP Chatbot Started!")
         print("Type your queries or 'quit' to exit.")
         print("Available commands:")
+        print("\nGmail resources:")
         print("- @meeting-emails: Get recent meeting-related emails")
         print("- @processed-meetings: Get processed meeting data")
         print("- @meeting-emails/<email_id>: Get specific meeting email by ID")
+        print("\nProject resources:")
+        print("- @project-info: Get project information")
+        print("- @feature-updates: Get feature updates")
+        print("- @project-status: Get project status")
+        print("\nCompany resources:")
+        print("- @company-info: Get company information")
+        print("- @solution-info: Get solution information")
+        print("- @company-all-info: Get all company information")
+        print("- @company-docs: Get company documents")
+        print("\nOther commands:")
         print("- /resources: List available resources")
         print("- /prompts: List available prompts")
         print("- /prompt <name> <arg1=value1>: Execute a prompt")
@@ -285,25 +373,13 @@ class MCP_ChatBot:
 
                 # Check for @resource syntax first
                 if query.startswith("@"):
-                    # Remove @ sign
-                    resource_identifier = query[1:]
+                    resource_uri = self.parse_resource_command(query)
 
-                    if resource_identifier == "meeting-emails":
-                        resource_uri = "gmail://meeting-emails"
-                    elif resource_identifier == "processed-meetings":
-                        resource_uri = "gmail://processed-meetings"
-                    elif resource_identifier.startswith("meeting-emails/"):
-                        # Extract email ID from meeting-emails/email_id
-                        email_id = resource_identifier.split("/", 1)[1]
-                        resource_uri = f"gmail://meeting-emails/{email_id}"
+                    if resource_uri:
+                        await self.get_resource(resource_uri)
                     else:
-                        print(f"Unknown resource: {resource_identifier}")
-                        print(
-                            "Available resources: meeting-emails, processed-meetings, meeting-emails/<email_id>"
-                        )
-                        continue
-
-                    await self.get_resource(resource_uri)
+                        print(f"Unknown resource: {query[1:]}")
+                        print("Use '/resources' to see all available resources")
                     continue
 
                 # Check for /command syntax

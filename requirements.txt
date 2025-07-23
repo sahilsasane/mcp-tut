@@ -1,0 +1,18 @@
+# Google API dependencies
+google-auth==2.23.0
+google-auth-oauthlib==1.0.0
+google-auth-httplib2==0.1.0
+google-api-python-client==2.95.0
+
+# MCP server framework
+mcp
+
+# Standard dependencies (usually included with Python)
+# dataclasses - Python 3.7+
+# typing - Python 3.5+
+# datetime - built-in
+# json - built-in
+# logging - built-in
+# os - built-in
+# re - built-in
+# base64 - built-in

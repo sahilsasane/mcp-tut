@@ -14,6 +14,8 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from mcp.server.fastmcp import FastMCP
 
+from src.config import PROCESSED_MEETING_EMAILS_FILE, UNPROCESSED_EMAILS_FILE
+
 SCOPES = [
     "https://www.googleapis.com/auth/gmail.modify",
     "https://www.googleapis.com/auth/calendar",
@@ -224,7 +226,7 @@ async def get_unprocessed_meetings() -> str:
     """Get recent meeting-related emails"""
     logger.info("Called get_unprocessed_meetings resource.")
     try:
-        path = os.path.join(GMAIL_DIR, "unprocessed_recent_meeting_emails.json")
+        path = os.path.join(GMAIL_DIR, UNPROCESSED_EMAILS_FILE)
         if not os.path.exists(path):
             logger.warning(f"No recent meeting emails found at {path}.")
             return json.dumps({"error": "No recent meeting emails found."})
@@ -242,7 +244,7 @@ async def get_processed_meetings() -> str:
     # Returns JSON of all processed meeting data
     logger.info("Called get_processed_meetings resource.")
     try:
-        path = os.path.join(GMAIL_DIR, "processed_recent_meeting_emails.json")
+        path = os.path.join(GMAIL_DIR, PROCESSED_MEETING_EMAILS_FILE)
         if not os.path.exists(path):
             logger.warning(f"No processed meetings found at {path}.")
             return json.dumps({"error": "No processed meetings found."})
@@ -259,7 +261,7 @@ async def get_meeting_email(email_id: str) -> str:
     """Get details of a specific meeting email by ID"""
     logger.info(f"Called get_meeting_email resource with email_id={email_id}.")
     try:
-        path = os.path.join(GMAIL_DIR, "processed_recent_meeting_emails.json")
+        path = os.path.join(GMAIL_DIR, PROCESSED_MEETING_EMAILS_FILE)
         if not os.path.exists(path):
             logger.warning(f"No processed meetings found at {path}.")
             return json.dumps({"error": "No processed meetings found."})
@@ -276,110 +278,6 @@ async def get_meeting_email(email_id: str) -> str:
     except Exception as e:
         logger.error(f"Error fetching meeting email: {e}")
         return json.dumps({"error": str(e)})
-
-
-# # TOOLS
-# @mcp.tool()  # convert email to meeting workflow (email -> calendar event with all attendees -> meeting doc)
-# async def email_to_meeting_workflow(email_id: str) -> str:
-#     logger.info(f"Called email_to_meeting_workflow tool with email_id={email_id}.")
-#     """
-#     Complete workflow: Email -> Calendar Event -> Meeting Doc
-
-#     Args:
-#         email_id: Gmail message ID
-#     """
-#     try:
-#         message = (
-#             workspace.gmail_service.users()
-#             .messages()
-#             .get(userId="me", id=email_id)
-#             .execute()
-#         )
-
-#         headers = message["payload"].get("headers", [])
-#         subject = next(
-#             (h["value"] for h in headers if h["name"] == "Subject"), "No Subject"
-#         )
-#         sender = next((h["value"] for h in headers if h["name"] == "From"), "Unknown")
-
-#         email_body = ""
-#         if "parts" in message["payload"]:
-#             for part in message["payload"]["parts"]:
-#                 if part["mimeType"] == "text/plain":
-#                     data = part["body"]["data"]
-#                     email_body = base64.urlsafe_b64decode(data).decode("utf-8")
-#                     break
-#         else:
-#             if message["payload"]["body"].get("data"):
-#                 email_body = base64.urlsafe_b64decode(
-#                     message["payload"]["body"]["data"]
-#                 ).decode("utf-8")
-
-#         meeting_details = workspace.extract_meeting_details(email_body, subject)
-
-#         meeting_context = MeetingContext(
-#             meeting_title=meeting_details["title"],
-#             attendees=meeting_details["attendees"],
-#             email_content=email_body,
-#             meeting_purpose=meeting_details["purpose"],
-#             key_topics=meeting_details["topics"],
-#             action_items=[],
-#         )
-
-#         meeting_id = f"meeting_{email_id}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
-#         workspace.meeting_contexts[meeting_id] = meeting_context
-
-#         doc_link = workspace.create_meeting_document(meeting_id, meeting_context)
-
-#         start_time = datetime.now().replace(
-#             hour=10, minute=0, second=0, microsecond=0
-#         ) + timedelta(days=1)
-#         end_time = start_time + timedelta(hours=1)
-
-#         event = {
-#             "summary": meeting_details["title"],
-#             "description": f"""Meeting Purpose: {meeting_details["purpose"]}
-
-# Meeting Notes Document: {doc_link}
-
-# Original Email from: {sender}
-
-# Key Topics:
-# {chr(10).join(f"• {topic}" for topic in meeting_details["topics"]) if meeting_details["topics"] else "• To be discussed"}
-
-# Attendees will have edit access to the meeting notes document.
-# """,
-#             "start": {
-#                 "dateTime": start_time.isoformat(),
-#                 "timeZone": "UTC",
-#             },
-#             "end": {
-#                 "dateTime": end_time.isoformat(),
-#                 "timeZone": "UTC",
-#             },
-#             "attendees": [{"email": email} for email in meeting_details["attendees"]],
-#         }
-
-#         created_event = (
-#             workspace.calendar_service.events()
-#             .insert(calendarId="primary", body=event)
-#             .execute()
-#         )
-
-#         return f"""✅ Meeting workflow completed successfully!
-
-# 📧 Email processed: {subject}
-# 📅 Calendar event created: {created_event.get("htmlLink")}
-# 📄 Meeting document created: {doc_link}
-# 👥 Attendees: {", ".join(meeting_details["attendees"])}
-
-# The meeting document has been shared with all attendees and linked in the calendar event description.
-# Meeting ID: {meeting_id}
-# """
-
-#     except Exception as e:
-#         logger.error(f"Error in email_to_meeting_workflow: {e}")
-#         return f"❌ Error in workflow: {str(e)}"
 
 
 # breakdown of email_to_meeting_workflow tool
@@ -401,7 +299,7 @@ async def extract_meeting_details(email_dict: dict) -> str:
 
         path = os.path.join(GMAIL_DIR)
         os.makedirs(path, exist_ok=True)
-        file_path = os.path.join(path, "processed_recent_meeting_emails.json")
+        file_path = os.path.join(path, PROCESSED_MEETING_EMAILS_FILE)
 
         existing_data = []
         if os.path.exists(file_path):
@@ -542,7 +440,7 @@ async def get_recent_meeting_emails() -> str:
         )
         path = os.path.join(GMAIL_DIR)
         os.makedirs(path, exist_ok=True)
-        file_path = os.path.join(path, "unprocessed_recent_meeting_emails.json")
+        file_path = os.path.join(path, UNPROCESSED_EMAILS_FILE)
 
         messages = results.get("messages", [])
         emails_data = {}
@@ -610,7 +508,7 @@ async def get_recent_meeting_emails() -> str:
 async def extract_recent_meeting_emails(emailId: str = None) -> str:
     """Extract recent meeting-related emails from Gmail."""
     try:
-        path = os.path.join(GMAIL_DIR, "unprocessed_recent_meeting_emails.json")
+        path = os.path.join(GMAIL_DIR, UNPROCESSED_EMAILS_FILE)
         logger.info(f"Reading recent meeting emails from {path}")
 
         if os.path.exists(path):

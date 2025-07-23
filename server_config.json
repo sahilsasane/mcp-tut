@@ -8,17 +8,11 @@
                 "."
             ]
         },
-        "research": {
+        "googleWorkspaceServer": {
             "command": "uv",
             "args": [
                 "run",
-                "mcp_server.py"
-            ]
-        },
-        "fetch": {
-            "command": "uvx",
-            "args": [
-                "mcp-server-fetch"
+                "server.py"
             ]
         }
     }

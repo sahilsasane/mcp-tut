@@ -1,0 +1,68 @@
+[
+    {
+        "email_id": "197e639effcaaab3",
+        "email_info": {
+            "email_id": "197e639effcaaab3",
+            "subject": "Project Kickoff Meeting \u2013 Discuss Next Steps and Timeline",
+            "sender": "Sahil <sahilsasane8@gmail.com>",
+            "receiver": "sahilsasane21comp@student.mes.ac.in",
+            "date": "Tue, 8 Jul 2025 00:20:34 +0530",
+            "content": "Hi Team,\r\n\r\nI hope you\u2019re doing well. I\u2019d like to schedule a project kickoff meeting to\r\ndiscuss the next steps for the new product launch. We need to align on the\r\nproject timeline, key deliverables, and responsibilities.\r\n\r\nProposed topics:\r\n\r\n    Finalizing the project scope\r\n\r\n    Assigning roles and tasks\r\n\r\n    Setting key milestones and deadlines\r\n\r\n    Addressing any immediate concerns\r\n\r\nSuggested date and time: Friday at 3:00 PM. Please confirm if this works or\r\npropose an alternative.\r\n\r\nAttendees: alice@example.com, bob@example.com, charlie@example.com\r\n\r\nLet me know if there\u2019s anything else to prepare in advance.\r\n\r\nBest regards,\r\nDavid\r\n",
+            "snippet": "Hi Team, I hope you&#39;re doing well. I&#39;d like to schedule a project kickoff meeting to discuss the next steps for the new product launch. We need to align on the project timeline, key",
+            "intent": "meeting_invitation"
+        },
+        "details": {
+            "title": "Project Kickoff Meeting \u2013 Discuss Next Steps and Timeline",
+            "attendees": [
+                "alice@example.com",
+                "bob@example.com",
+                "charlie@example.com"
+            ],
+            "purpose": "I\u2019d like to schedule a project kickoff meeting to\r\ndiscuss the next steps for the new product launch",
+            "topics": [],
+            "time": "3:00 PM"
+        }
+    },
+    {
+        "email_id": "19827b997218fa72",
+        "email_info": {
+            "email_id": "19827b997218fa72",
+            "subject": "Request for Feature Update and Current Progress Report",
+            "sender": "Sahil <sahilsasane8@gmail.com>",
+            "receiver": "sahilsasane21comp@student.mes.ac.in",
+            "date": "Sun, 20 Jul 2025 17:35:19 +0530",
+            "content": "Hi [Name],\r\nPlease share the current progress for the \"Lead Scoring Automation\" and\r\n\"Alert Agent\" modules.\r\nInclude:\r\n    1. % completion for each module\r\n    2. Any issues in integrating the Anthropic Model Context Protocol (MCP)\r\n    3. Logs/output from recent test runs, if available\r\n    4. Reference to PRs in GitHub or internal repo\r\n\r\nAlso mention any delays impacting the delivery of the FastAPI-based backend\r\nor DailyBot integration.\r\n\r\nRegards,\r\nThank you\r\n",
+            "snippet": "Hi [Name], Please share the current progress for the &quot;Lead Scoring Automation&quot; and &quot;Alert Agent&quot; modules. Include: 1. % completion for each module 2. Any issues in integrating the",
+            "intent": "project_status"
+        },
+        "details": {
+            "project_subject": "Project: Request for Feature Update and Current Progress Report",
+            "queries": [
+                "Please share the current progress for the \"Lead Scoring Automation\" and",
+                "Also mention any delays impacting the delivery of the FastAPI-based backend"
+            ],
+            "source_excerpt": "Hi [Name],\r\nPlease share the current progress for the \"Lead Scoring Automation\" and\r\n\"Alert Agent\" modules.\r\nInclude:\r\n    1. % completion for each module\r\n    2. Any issues in integrating the Anthropic Model Context Protocol (MCP)\r\n    3. Logs/output from recent test runs, if available\r\n    4. Reference to PRs in GitHub or internal repo\r\n\r\nAlso mention any delays impacting the delivery of the FastAPI-based backend\r\nor DailyBot integration.\r\n\r\nRegards,\r\nThank you\r\n"
+        }
+    },
+    {
+        "email_id": "19827bae70f19c1d",
+        "email_info": {
+            "email_id": "19827bae70f19c1d",
+            "subject": "Status Check on Project GenAI-Orchestrator Backend",
+            "sender": "Sahil <sahilsasane8@gmail.com>",
+            "receiver": "sahilsasane21comp@student.mes.ac.in",
+            "date": "Sun, 20 Jul 2025 17:36:44 +0530",
+            "content": "Hi team,\r\nNeed a quick update on the GenAI-Orchestrator backend pipeline.\r\nSpecifically:\r\n1. Status of LangGraph-based agent execution flow\r\n2. Completion of Redis-based context store\r\n3. Endpoint readiness for \"/agent/execute\" and \"/state/snapshot\"\r\n4. Any known latency issues in WebSocket response from the FastAPI service\r\n\r\nInclude links to the staging deployment (Postman or Swagger), and current\r\ncoverage from unit tests if possible.\r\n\r\nRegards,\r\nThanks\r\n",
+            "snippet": "Hi team, Need a quick update on the GenAI-Orchestrator backend pipeline. Specifically: 1. Status of LangGraph-based agent execution flow 2. Completion of Redis-based context store 3. Endpoint readiness",
+            "intent": "project_status"
+        },
+        "details": {
+            "project_subject": "Status Check on Project GenAI-Orchestrator Backend",
+            "queries": [
+                "Need a quick update on the GenAI-Orchestrator backend pipeline.",
+                "1. Status of LangGraph-based agent execution flow"
+            ],
+            "source_excerpt": "Hi team,\r\nNeed a quick update on the GenAI-Orchestrator backend pipeline.\r\nSpecifically:\r\n1. Status of LangGraph-based agent execution flow\r\n2. Completion of Redis-based context store\r\n3. Endpoint readiness for \"/agent/execute\" and \"/state/snapshot\"\r\n4. Any known latency issues in WebSocket response from the FastAPI service\r\n\r\nInclude links to the staging deployment (Postman or Swagger), and current\r\ncoverage from unit tests if possible.\r\n\r\nRegards,\r\nThanks\r\n"
+        }
+    }
+]

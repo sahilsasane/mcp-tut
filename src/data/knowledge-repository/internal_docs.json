@@ -1,0 +1,67 @@
+{
+    "internal_documents": [
+        {
+            "document_id": "DOC-ENG-001",
+            "title": "LangGraph Agent Design Spec",
+            "department": "Engineering",
+            "access_level": "restricted",
+            "last_updated": "2025-07-15",
+            "type": "PDF",
+            "link": "https://abc-internal.s3.amazonaws.com/docs/LangGraph_Agent_Design.pdf"
+        },
+        {
+            "document_id": "DOC-ENG-002",
+            "title": "FastAPI Endpoint Reference",
+            "department": "Engineering",
+            "access_level": "internal",
+            "last_updated": "2025-07-17",
+            "type": "Markdown",
+            "link": "https://abc-internal.s3.amazonaws.com/docs/FastAPI_Endpoints.md"
+        },
+        {
+            "document_id": "DOC-PM-001",
+            "title": "Enterprise GenAI Rollout Plan",
+            "department": "Product Management",
+            "access_level": "restricted",
+            "last_updated": "2025-07-10",
+            "type": "Excel",
+            "link": "https://abc-internal.s3.amazonaws.com/docs/GenAI_Rollout_Plan.xlsx"
+        },
+        {
+            "document_id": "DOC-SEC-001",
+            "title": "SOC2 Compliance Checklist",
+            "department": "Security",
+            "access_level": "confidential",
+            "last_updated": "2025-06-30",
+            "type": "PDF",
+            "link": "https://abc-internal.s3.amazonaws.com/docs/SOC2_Checklist.pdf"
+        },
+        {
+            "document_id": "DOC-OPS-001",
+            "title": "GKE Deployment SOP",
+            "department": "DevOps",
+            "access_level": "internal",
+            "last_updated": "2025-07-12",
+            "type": "Google Doc",
+            "link": "https://abc-internal.docs.google.com/document/d/abc-gke-deployment-sop"
+        },
+        {
+            "document_id": "DOC-DATA-001",
+            "title": "Qdrant Indexing Strategy",
+            "department": "Data Engineering",
+            "access_level": "restricted",
+            "last_updated": "2025-07-05",
+            "type": "Notion",
+            "link": "https://notion.abc-internal.com/qdrant-indexing-strategy"
+        },
+        {
+            "document_id": "DOC-UX-001",
+            "title": "UI Mockups for Workflow Trigger",
+            "department": "Design",
+            "access_level": "internal",
+            "last_updated": "2025-07-14",
+            "type": "Figma",
+            "link": "https://figma.com/file/abc/UI-Mockups-Trigger"
+        }
+    ]
+}

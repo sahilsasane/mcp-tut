@@ -1,0 +1,11 @@
+{
+    "servers": {
+        "googleWorkspaceServer": {
+            "command": "uv",
+            "args": [
+                "run",
+                "/home/sahilsasane/TMDC/misc/MCP/google-workspace/server.py"
+            ]
+        }
+    }
+}

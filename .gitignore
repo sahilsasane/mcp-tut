@@ -11,3 +11,8 @@ wheels/
 token.json
 credentials.json
 LS-7
+src/secrets/
+notebooks/credentials.json
+notebooks/token.json
+*.pyc
+__pycache__/

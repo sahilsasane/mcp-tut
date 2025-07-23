@@ -1,0 +1,187 @@
+{
+    "company": {
+        "name": "ABC Company Pvt. Ltd.",
+        "established": 2017,
+        "hq": "Bengaluru, India",
+        "employees": 180,
+        "revenue": "$18M",
+        "core_clients": [
+            "FinTech",
+            "Healthcare",
+            "LegalTech"
+        ],
+        "flagship_solution": "CortexFlow"
+    },
+    "solutions": [
+        {
+            "name": "CortexFlow",
+            "purpose": "Dynamic workflow engine leveraging LLM agents for enterprise automation",
+            "features": [
+                "LangGraph-based DAG agent execution",
+                "Plugin support for Salesforce, Notion, SAP",
+                "Custom policy injection for model responses"
+            ],
+            "tech_stack": [
+                "LangGraph",
+                "FastAPI",
+                "OpenAI GPT-4",
+                "Docker"
+            ],
+            "security": "RBAC, encrypted S3, signed JWT sessions",
+            "customers": "13 enterprise clients in regulated sectors",
+            "deployment_modes": [
+                "Cloud (GKE, EKS)",
+                "On-Prem (VMWare)"
+            ]
+        },
+        {
+            "name": "InsightBridge",
+            "purpose": "Retrieval-augmented GenAI chat layer for internal enterprise knowledge",
+            "features": [
+                "Contextual semantic search",
+                "Real-time Q&A across internal tools",
+                "LDAP-based access control"
+            ],
+            "tech_stack": [
+                "LlamaIndex",
+                "Qdrant",
+                "OpenAI",
+                "Next.js",
+                "FastAPI"
+            ],
+            "security": "SOC2-compliant, Azure Key Vault-based encryption",
+            "customers": "Used by 9,000+ daily active users",
+            "deployment_modes": [
+                "Cloud"
+            ]
+        }
+    ],
+    "architecture": {
+        "workflow_dag": [
+            "ingestor_node",
+            "retriever_node",
+            "router_node",
+            "responder_node"
+        ],
+        "storage": {
+            "app_data": "PostgreSQL",
+            "vector_index": "Qdrant",
+            "file_storage": "AWS S3"
+        }
+    },
+    "agents": [
+        {
+            "name": "IngestionAgent",
+            "role": "Extract and chunk incoming documents",
+            "model": "DistilBERT tokenizer",
+            "runtime": "Python 3.10"
+        },
+        {
+            "name": "RoutingAgent",
+            "role": "Classify and route input to appropriate downstream agent",
+            "model": "OpenAI GPT-4 (zero-shot classifier)",
+            "runtime": "Python 3.10"
+        },
+        {
+            "name": "ResponseAgent",
+            "role": "Generate user-facing response using model + grounding context",
+            "model": "Mistral 7B fine-tuned variant",
+            "runtime": "Python 3.10"
+        }
+    ],
+    "apis": [
+        {
+            "endpoint": "/agent/deploy",
+            "method": "POST",
+            "input_example": {
+                "agent_id": "response-agent-v2",
+                "env": "staging",
+                "config": {
+                    "threads": 4,
+                    "max_concurrency": 10
+                }
+            }
+        },
+        {
+            "endpoint": "/workflow/trigger",
+            "method": "POST",
+            "input_example": {
+                "workflow_id": "contract-review-flow-23",
+                "input_payload": {
+                    "document_url": "https://abc.s3.amazonaws.com/sample.pdf",
+                    "metadata": {
+                        "source": "Salesforce",
+                        "priority": "high"
+                    }
+                }
+            }
+        }
+    ],
+    "benchmarks": {
+        "throughput": "100 concurrent workflows",
+        "completion_time": "3.6s average per workflow",
+        "memory": "1.2GB per container (peak)",
+        "availability": "99.96% uptime (last 30 days)",
+        "success_rate": "98.9% LLM call success",
+        "webhook_failures": "0.3% (DailyBot handoff)"
+    },
+    "integrations": [
+        {
+            "component": "Vector DB",
+            "vendor": "Qdrant",
+            "mode": "SaaS",
+            "status": "Active"
+        },
+        {
+            "component": "File Storage",
+            "vendor": "AWS S3",
+            "mode": "Cloud",
+            "status": "Active"
+        },
+        {
+            "component": "Webhooks",
+            "vendor": "DailyBot",
+            "mode": "HTTP",
+            "status": "Partial"
+        },
+        {
+            "component": "Analytics Layer",
+            "vendor": "Prometheus",
+            "mode": "Internal",
+            "status": "Active"
+        },
+        {
+            "component": "Auth Provider",
+            "vendor": "Auth0",
+            "mode": "OAuth2.0",
+            "status": "Active"
+        }
+    ],
+    "security": {
+        "encryption": "AES-256 for data at rest",
+        "key_management": "AWS KMS + Azure Vault",
+        "audit_logging": true,
+        "vulnerability_scans": "Nightly (via Snyk)",
+        "access_policy": "RBAC + API Key rotation every 7 days"
+    },
+    "deployment": {
+        "ci_cd": "GitHub Actions + ArgoCD",
+        "staging_duration": "48h soak test before prod promotion",
+        "model_release_flow": [
+            "Dev tag",
+            "Canary",
+            "Shadow mode",
+            "GA"
+        ]
+    },
+    "contacts": {
+        "tech_lead": "Anya Raval – anya.r@abc.com",
+        "solution_architect": "Mohit Jain – mohit.j@abc.com",
+        "secops": "secops@abc.com",
+        "slack_channels": [
+            "#genai-backend",
+            "#genai-deployments",
+            "#incident-hotline"
+        ]
+    }
+}

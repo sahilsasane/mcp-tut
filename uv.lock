@@ -299,6 +299,7 @@ dependencies = [
     { name = "mcp", extra = ["cli"] },
     { name = "openai" },
     { name = "pandas" },
+    { name = "python-dotenv" },
     { name = "requests" },
 ]
 
@@ -315,6 +316,7 @@ requires-dist = [
     { name = "mcp", extras = ["cli"], specifier = ">=1.10.1" },
     { name = "openai", specifier = ">=1.93.1" },
     { name = "pandas", specifier = ">=2.3.0" },
+    { name = "python-dotenv", specifier = ">=1.1.1" },
     { name = "requests", specifier = ">=2.32.4" },
 ]
 

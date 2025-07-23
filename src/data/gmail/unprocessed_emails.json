@@ -1,0 +1,55 @@
+[
+    {
+        "19827bd5daf925ac": {
+            "email_id": "19827bd5daf925ac",
+            "subject": "Access Request: GenAI Integration Design Docs",
+            "sender": "Sahil <sahilsasane8@gmail.com>",
+            "receiver": "sahilsasane21comp@student.mes.ac.in",
+            "date": "Sun, 20 Jul 2025 17:39:26 +0530",
+            "content": "Hi team,\r\nPlease share the access to the following:\r\n\r\n\u201cAgent Orchestration v2\u201d document\r\n\r\n Anthropic MCP experiment logs\r\n\r\nOverview of the Redis-based session management\r\n\r\nAny Airtable sheet tracking sprint-wise GenAI deliverables\r\n\r\nNeed to consolidate these before the director sync-up.\r\n",
+            "snippet": "Hi team, Please share the access to the following: \u201cAgent Orchestration v2\u201d document Anthropic MCP experiment logs Overview of the Redis-based session management Any Airtable sheet tracking sprint-wise",
+            "intent": "doc_sharing_request"
+        },
+        "19827bc441b4bbd7": {
+            "email_id": "19827bc441b4bbd7",
+            "subject": "Request for LangGraph Architecture Diagram & API Contract",
+            "sender": "Sahil <sahilsasane8@gmail.com>",
+            "receiver": "sahilsasane21comp@student.mes.ac.in",
+            "date": "Sun, 20 Jul 2025 17:38:14 +0530",
+            "content": "Hi team,\r\nPlease share the high-level LangGraph architecture used in the backend\r\nagent design.\r\nAlso, we need:\r\nSwagger/OpenAPI schema for /agent/deploy and /workflow/trigger\r\nJSON schema used for inter-agent communication\r\nAny internal benchmarks on agent execution time under load\r\n\r\nRequired to plan deployment with our internal infra team.\r\n",
+            "snippet": "Hi team, Please share the high-level LangGraph architecture used in the backend agent design. Also, we need: Swagger/OpenAPI schema for /agent/deploy and /workflow/trigger JSON schema used for inter-",
+            "intent": "information_request"
+        },
+        "19827bbacf411316": {
+            "email_id": "19827bbacf411316",
+            "subject": "Queries Regarding Enterprise GenAI Deployment",
+            "sender": "Sahil <sahilsasane8@gmail.com>",
+            "receiver": "sahilsasane21comp@student.mes.ac.in",
+            "date": "Sun, 20 Jul 2025 17:37:36 +0530",
+            "content": "Hi team,\r\nWe need clarity on the following items related to the Enterprise GenAI\r\nrollout:\r\n    Is support for LlamaIndex with Qdrant vector store included in this\r\ncycle?\r\n    Can you confirm S3 access for model checkpoints?\r\n    What\u2019s the fallback mechanism if the DailyBot webhook fails during\r\nworkflow handoff?\r\n    ETA for delivery of the UI mockups linked with the FastAPI endpoints\r\n\r\nPlease advise.\r\n",
+            "snippet": "Hi team, We need clarity on the following items related to the Enterprise GenAI rollout: Is support for LlamaIndex with Qdrant vector store included in this cycle? Can you confirm S3 access for model",
+            "intent": "client_inquiry"
+        },
+        "19827bae70f19c1d": {
+            "email_id": "19827bae70f19c1d",
+            "subject": "Status Check on Project GenAI-Orchestrator Backend",
+            "sender": "Sahil <sahilsasane8@gmail.com>",
+            "receiver": "sahilsasane21comp@student.mes.ac.in",
+            "date": "Sun, 20 Jul 2025 17:36:44 +0530",
+            "content": "Hi team,\r\nNeed a quick update on the GenAI-Orchestrator backend pipeline.\r\nSpecifically:\r\n1. Status of LangGraph-based agent execution flow\r\n2. Completion of Redis-based context store\r\n3. Endpoint readiness for \"/agent/execute\" and \"/state/snapshot\"\r\n4. Any known latency issues in WebSocket response from the FastAPI service\r\n\r\nInclude links to the staging deployment (Postman or Swagger), and current\r\ncoverage from unit tests if possible.\r\n\r\nRegards,\r\nThanks\r\n",
+            "snippet": "Hi team, Need a quick update on the GenAI-Orchestrator backend pipeline. Specifically: 1. Status of LangGraph-based agent execution flow 2. Completion of Redis-based context store 3. Endpoint readiness",
+            "intent": "project_status"
+        },
+        "19827b997218fa72": {
+            "email_id": "19827b997218fa72",
+            "subject": "Request for Feature Update and Current Progress Report",
+            "sender": "Sahil <sahilsasane8@gmail.com>",
+            "receiver": "sahilsasane21comp@student.mes.ac.in",
+            "date": "Sun, 20 Jul 2025 17:35:19 +0530",
+            "content": "Hi [Name],\r\nPlease share the current progress for the \"Lead Scoring Automation\" and\r\n\"Alert Agent\" modules.\r\nInclude:\r\n    1. % completion for each module\r\n    2. Any issues in integrating the Anthropic Model Context Protocol (MCP)\r\n    3. Logs/output from recent test runs, if available\r\n    4. Reference to PRs in GitHub or internal repo\r\n\r\nAlso mention any delays impacting the delivery of the FastAPI-based backend\r\nor DailyBot integration.\r\n\r\nRegards,\r\nThank you\r\n",
+            "snippet": "Hi [Name], Please share the current progress for the &quot;Lead Scoring Automation&quot; and &quot;Alert Agent&quot; modules. Include: 1. % completion for each module 2. Any issues in integrating the",
+            "intent": "project_status"
+        }
+    },
+    {}
+]
